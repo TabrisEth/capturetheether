@@ -113,8 +113,7 @@ while True:
     try:
         print("will reconnect contract...")
         contract = w3.eth.contract(address=contract_addr, abi=abi)
-        # print(contract)
-        # print(f"get all functions: {contract.all_functions()}")
+
         nonce = nonce + 1
         contract_transaction = contract.functions.callsettle().buildTransaction(
             {
