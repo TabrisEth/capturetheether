@@ -113,7 +113,6 @@ while True:
     try:
         print("will reconnect contract...")
         contract = w3.eth.contract(address=contract_addr, abi=abi)
-
         nonce = nonce + 1
         contract_transaction = contract.functions.callsettle().buildTransaction(
             {
